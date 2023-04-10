@@ -21,7 +21,7 @@ export default defineComponent({
         ],
         rightPannel: [
           {
-            text: 'Сравнение',
+            text: 'Сравнени',
             style: {
               uppercase: true
             }

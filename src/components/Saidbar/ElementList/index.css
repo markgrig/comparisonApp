@@ -1,0 +1,31 @@
+.element {
+    display: flex;
+    margin:  0px 24px;
+  }
+
+  .element:hover {
+    cursor: pointer;
+  }
+
+  .text {
+    padding: 0 10px;
+  }
+
+  .ico {
+    width: 18px;
+    aspect-ratio: 1/1;
+    margin: auto 10px;
+  }
+
+  @media (max-width: 700px) {
+
+    .element  {
+      display: flex;
+      margin: 5px 0;
+    }
+
+    .ico {
+      margin: 0 10px;
+    }
+
+  }

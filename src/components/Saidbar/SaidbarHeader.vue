@@ -6,40 +6,18 @@
       alt="no loaded solidBar.png"
       @click = "clickModelMenu()">
 
-    <div :class = "BoxPannel.className" >
-      <div
-        class="left-pannel">
+    <div :class = "BoxPannel" >
 
-        <div
-          v-for="el, i in pannelData?.leftPannel"
-          :key="i">
-
-          <div class="text">
-            {{ styleText(el?.text, el) }}
-          </div>
-          <img class= "ico"
-            v-if="el?.icoUrl"
-            :src="el?.icoUrl"
-            :alt="'no loaded ico ' + el?.icoUrl">
-
-        </div>
+      <div class="left-pannel">
+        <ElementList
+          :elementData ="pannelData?.leftPannel">
+        </ElementList>
       </div>
 
-      <div
-        class="right-pannel">
-
-        <div
-          v-for="el, i in pannelData?.rightPannel"
-          :key="i">
-          <div class="text">
-            {{ styleText(el?.text, el)}}
-          </div>
-          <img class= "ico"
-            v-if="el?.icoUrl"
-            :src="el?.icoUrl"
-            :alt="'no loaded ico ' + el?.icoUrl">
-        </div>
-
+      <div class="right-pannel">
+        <ElementList
+          :elementData ="pannelData?.rightPannel">
+        </ElementList>
       </div>
 
     </div>
@@ -52,39 +30,25 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
-interface PanelElement {
-  text: string
-  style?: {
-    uppercase?: boolean
-  }
-  icoUrl?: string
-}
-
-interface Pannels {
-  leftPannel: Array<PanelElement>
-  rightPannel: Array<PanelElement>
-}
-
-interface mobileMenu {
-  isOpen: boolean,
-}
-
-interface className {
-  className: string
-}
+import ElementList from './ElementList/ElementList.vue'
+import type { className } from './type'
+import { IPannels, IMobileMenu } from './type'
 
 export default defineComponent({
   name: 'SaidbarHeader',
+  components: {
+    ElementList
+  },
   props: {
     pannelData: {
-      type: Object as PropType<Pannels>
+      type: Object as PropType<IPannels>
     }
   },
   data () {
     return {
       mobileMenu: {
         isOpen: false
-      } as mobileMenu
+      } as IMobileMenu
     }
   },
   computed: {
@@ -92,21 +56,14 @@ export default defineComponent({
       const isOpen:boolean = this.mobileMenu.isOpen
 
       if (isOpen) {
-        return { className: 'box-pannel --open-box' }
+        return 'box-pannel --open-box'
       }
-      return { className: 'box-pannel --close-box' }
+      return 'box-pannel --close-box'
     }
   },
   methods: {
     clickModelMenu () {
       this.mobileMenu.isOpen = !this.mobileMenu.isOpen
-    },
-    styleText (text:string, el:PanelElement):string {
-      if (el?.style?.uppercase) {
-        return text.toUpperCase()
-      }
-
-      return text
     }
   }
 })
@@ -209,11 +166,6 @@ export default defineComponent({
   .box-pannel, .left-pannel, .right-pannel   {
     flex-direction: column;
     margin: 0;
-  }
-
-  .right-pannel>div, .left-pannel >div  {
-    display: flex;
-    margin: 5px 0;
   }
 
   .ico {
