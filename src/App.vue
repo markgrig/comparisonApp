@@ -1,27 +1,52 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <SaidbarHeader
+    :pannelData = "pannelData">
+  </SaidbarHeader>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import SaidbarHeader from './components/Saidbar/SaidbarHeader.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    SaidbarHeader
+  },
+  data () {
+    return {
+      pannelData: {
+        leftPannel: [
+          { text: 'Каталог' }
+        ],
+        rightPannel: [
+          {
+            text: 'Сравнение',
+            style: {
+              uppercase: true
+            }
+          },
+          {
+            text: 'Личный кабинет',
+            icoUrl: require('@/assets/ico/profile.jpg')
+          }
+        ]
+      }
+    }
   }
 })
 </script>
 
 <style>
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-style: italic;
+}
+
+html,body {
+  margin: 0;
+  padding: 0;
 }
 </style>
