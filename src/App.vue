@@ -45,7 +45,15 @@ export default defineComponent({
         },
         {
           name: 'smartphone',
-          url: '/db/smartphons.json'
+          url: 'https://markgrig.github.io/comparisonApp/db/smartphons.json'
+        },
+        {
+          name: 'smartphone',
+          url: 'https://api.device-specs.io/api/smartphones',
+          headers: {
+            Authorization: 'bearer e3e0e8261fb7660404b8819fea1bd63875bd1d6b9b9aa45439cb948999e4a425938d7d252b16647c15eb4beb581d22404c972d3f59f727b773a89bb990a9155f1ab4d552a91d5aa7c654a73da66f1e70c51c028986cd48ddad87e319a856905842cf3ed3fbcab040bb2f4ea9b411b89968ed5a0d2d0909c7a6bddc69e287dbac',
+            'Content-Type': 'application/json'
+          }
         }
       ] as Array<IItems>
     }
