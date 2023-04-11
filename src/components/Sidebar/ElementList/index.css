@@ -23,7 +23,9 @@
       display: flex;
       margin: 5px 0;
     }
-
+    .box-pannel>div {
+        margin: 8px 30px;
+    }
     .ico {
       margin: 0 10px;
     }

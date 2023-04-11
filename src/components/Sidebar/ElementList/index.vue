@@ -1,5 +1,4 @@
 <template>
-
         <div
           class="element"
           v-for="el, i in elementData"
@@ -14,14 +13,13 @@
             :alt="'no loaded ico ' + el?.icoUrl">
 
         </div>
-
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
-import type { element, arrayElement } from './type'
+import type { element, arrayElement } from './index'
 
 export default defineComponent({
   name: 'ElementList',

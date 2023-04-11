@@ -1,23 +1,23 @@
 <template>
-  <SaidbarHeader
+  <SideBar
     :pannelData = "pannelData">
-  </SaidbarHeader>
-  <ItemsPage
-    :items = items[0]>
-  </ItemsPage>
+  </SideBar>
+  <Comprasion
+    :items = items[1]>
+  </Comprasion>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import SaidbarHeader from './components/Saidbar/SaidbarHeader.vue'
-import ItemsPage from './pages/comprasions/ItemsPage.vue'
-import { IItems } from './type'
+import SideBar from './components/Sidebar/index.vue'
+import Comprasion from './pages/comprasions/index.vue'
+import { IItems } from './index'
 
 export default defineComponent({
   name: 'App',
   components: {
-    SaidbarHeader,
-    ItemsPage
+    SideBar,
+    Comprasion
   },
   data () {
     return {
@@ -42,6 +42,10 @@ export default defineComponent({
         {
           name: 'smartphone',
           url: 'https://dummyjson.com/products'
+        },
+        {
+          name: 'smartphone',
+          url: '/db/smartphons.json'
         }
       ] as Array<IItems>
     }

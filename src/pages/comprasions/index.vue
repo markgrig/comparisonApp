@@ -1,17 +1,15 @@
 <template>
-
         <div> Hello! {{ gettedItems }}</div>
         <div v-if = "isLoadingItems">
           Loading...
         </div>
-
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import { IItems } from '@/type'
-import getItems from './helper/geItems'
+import { IItems } from '@/index'
+import getItems from './helper/getItems'
 export default defineComponent({
   name: 'ItemsPage',
   props: {
