@@ -3,7 +3,7 @@
     :pannelData = "pannelData">
   </SideBar>
   <Comprasion
-    :items = items[0]>
+    :query = items[0]>
   </Comprasion>
 </template>
 
@@ -11,7 +11,7 @@
 import { defineComponent } from 'vue'
 import SideBar from './components/Sidebar/index.vue'
 import Comprasion from './pages/comprasions/index.vue'
-import { IItems } from './index'
+import { IQuery } from './index'
 
 export default defineComponent({
   name: 'App',
@@ -55,7 +55,7 @@ export default defineComponent({
             'Content-Type': 'application/json'
           }
         }
-      ] as Array<IItems>
+      ] as Array<IQuery>
     }
   }
 })

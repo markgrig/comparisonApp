@@ -1,7 +1,6 @@
 <template>
         <ItemsView
           :items = "gettedItems">
-
         </ItemsView>
         <div v-if = "isLoadingItems">
           Loading...
@@ -12,7 +11,7 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
-import { IItems } from '@/index'
+import { IQuery, IItem } from '@/index'
 import getItems from './helper/getItems'
 import ItemsView from './components/ItemsView/index.vue'
 
@@ -22,11 +21,11 @@ export default defineComponent({
     ItemsView
   },
   props: {
-    queryObj: Object as PropType<IItems>
+    query: Object as PropType<IQuery>
   },
   data () {
     return {
-      gettedItems: [] as Array<object>
+      gettedItems: [] as Array<IItem>
     }
   },
   computed: {
@@ -41,8 +40,8 @@ export default defineComponent({
     }
   },
   async mounted () {
-    if (this.queryObj) {
-      this.gettedItems = await getItems(this.queryObj?.url)
+    if (this.query) {
+      this.gettedItems = await getItems(this.query?.url) as Array<IItem>
     }
   }
 })

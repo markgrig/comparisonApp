@@ -6,8 +6,11 @@ export default async function getItems (url:string, header?:object):Promise<obje
       throw new Error('It is bad Response!')
     }
 
-    const res:Promise<object[]> = await response.json()
-    return res
+    type Response = { data: object[] }
+    const res:Response = await response.json()
+    console.log(res.data)
+
+    return res.data
   } catch {
     throw new Error(`Error in GET: ${url}`)
   }

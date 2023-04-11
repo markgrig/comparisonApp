@@ -1,6 +1,10 @@
 <template>
-        <img class="img-item">
-        <div class = "name-item"></div>
+        <img
+          class="img-item"
+          :src = "url">
+        <div class = "name-item">
+          {{ name }}
+        </div>
 </template>
 
 <script lang="ts">
