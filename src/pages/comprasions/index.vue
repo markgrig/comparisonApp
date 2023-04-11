@@ -1,5 +1,8 @@
 <template>
-        <div> Hello! {{ gettedItems }}</div>
+        <ItemsView
+          :items = "gettedItems">
+
+        </ItemsView>
         <div v-if = "isLoadingItems">
           Loading...
         </div>
@@ -8,16 +11,22 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
+
 import { IItems } from '@/index'
 import getItems from './helper/getItems'
+import ItemsView from './components/ItemsView/index.vue'
+
 export default defineComponent({
   name: 'ItemsPage',
+  components: {
+    ItemsView
+  },
   props: {
-    items: Object as PropType<IItems>
+    queryObj: Object as PropType<IItems>
   },
   data () {
     return {
-      gettedItems: {} as object
+      gettedItems: [] as Array<object>
     }
   },
   computed: {
@@ -32,8 +41,8 @@ export default defineComponent({
     }
   },
   async mounted () {
-    if (this.items) {
-      this.gettedItems = await getItems(this.items?.url)
+    if (this.queryObj) {
+      this.gettedItems = await getItems(this.queryObj?.url)
     }
   }
 })

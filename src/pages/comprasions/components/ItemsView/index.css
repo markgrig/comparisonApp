@@ -1,0 +1,11 @@
+.items-box {
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.element-box {
+    width: 100px;
+    height: max-content;
+}
+
