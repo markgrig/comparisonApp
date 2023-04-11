@@ -2,16 +2,22 @@
   <SaidbarHeader
     :pannelData = "pannelData">
   </SaidbarHeader>
+  <ItemsPage
+    :items = items[0]>
+  </ItemsPage>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import SaidbarHeader from './components/Saidbar/SaidbarHeader.vue'
+import ItemsPage from './pages/comprasions/ItemsPage.vue'
+import { IItems } from './type'
 
 export default defineComponent({
   name: 'App',
   components: {
-    SaidbarHeader
+    SaidbarHeader,
+    ItemsPage
   },
   data () {
     return {
@@ -21,7 +27,7 @@ export default defineComponent({
         ],
         rightPannel: [
           {
-            text: 'Сравнени',
+            text: 'Сравнение',
             style: {
               uppercase: true
             }
@@ -31,7 +37,13 @@ export default defineComponent({
             icoUrl: require('@/assets/ico/profile.jpg')
           }
         ]
-      }
+      },
+      items: [
+        {
+          name: 'smartphone',
+          url: 'https://dummyjson.com/products'
+        }
+      ] as Array<IItems>
     }
   }
 })

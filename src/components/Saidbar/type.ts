@@ -1,8 +1,14 @@
-import type { element } from './ElementList/type'
+export interface IElement{
+    text: string
+    style?: {
+      uppercase?: boolean
+    }
+    icoUrl?: string
+}
 
 export interface IPannels {
-  leftPannel: Array<element>
-  rightPannel: Array<element>
+  leftPannel: Array<IElement>
+  rightPannel: Array<IElement>
 }
 
 export interface IMobileMenu {
