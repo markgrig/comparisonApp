@@ -40,15 +40,15 @@ export default defineComponent({
       },
       items: [
         {
-          name: 'smartphone',
+          name: 'Смартфоны',
           url: 'https://markgrig.github.io/comparisonApp/db/smartphones.json'
         },
         {
-          name: 'smartphone',
+          name: 'Смартфоны',
           url: 'https://dummyjson.com/products'
         },
         {
-          name: 'smartphone',
+          name: 'Смартфоны',
           url: 'https://api.device-specs.io/api/smartphones',
           headers: {
             Authorization: 'bearer XXX',
@@ -62,11 +62,11 @@ export default defineComponent({
 </script>
 
 <style>
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400@500@900&family=Roboto&display=swap');;
 #app {
   font-family: 'Roboto';
   font-weight: 500;
-  font-style: italic;
+  font-style: normal;
 }
 
 html,body {

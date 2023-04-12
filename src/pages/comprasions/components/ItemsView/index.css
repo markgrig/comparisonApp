@@ -1,11 +1,44 @@
+.body-comprasion {
+    background: #F4F9FC;
+}
+
 .items-table {
     width: 90%;
     margin: auto;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #3B4157;
 }
 
 .element-box {
-    width: 10%;
-    padding: 10px;
-    text-align: center
+    width: 12%;
+    padding:  30px 0px;
+    text-align: center;
+    border-bottom: 1px solid #CDCFD2;
+
 }
+
+.title-box {
+    width: 15%;
+    padding: 10px;
+    height: 70px;
+    text-align: center;
+    border-bottom: 1px solid #CDCFD2;
+}
+
+.title-propetry {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #A4A9B9;
+}
+
+
 

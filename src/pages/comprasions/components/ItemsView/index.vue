@@ -1,7 +1,12 @@
 <template>
-
-<table class = "items-table">
+  <div class = "body-comprasion">
+    <table class = "items-table">
       <tr>
+          <th class = "title-box">
+            <ComparsionItems
+              :content = "contentComparsion">
+            </ComparsionItems>
+          </th>
           <th
             class = "element-box"
             v-for = "el, i in itemsNew"
@@ -17,6 +22,7 @@
       <tr
       v-for = "elCol, keyCol in rowsTitle"
           :key="keyCol">
+          <td class = "title-box title-propetry" > {{ elCol  }} </td>
           <td
             class = "element-box"
             v-for = "elRow, keyRow in itemsNew"
@@ -26,21 +32,22 @@
                 </div>
           </td>
       </tr>
-
 </table>
-
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import ItemsCard from './ItemsCard/index.vue'
+import ComparsionItems from '../ComparsionItems/index.vue'
 import { IItem, ITableProperty } from '@/index'
 
 export default defineComponent({
   name: 'ItemsView',
   components: {
-    ItemsCard
+    ItemsCard,
+    ComparsionItems
   },
   props: {
     items: {
@@ -50,18 +57,19 @@ export default defineComponent({
   data () {
     return {
       rowsTitle: {
-        general_year: 1,
-        display_size__inch: 1,
-        cpu_type: 1,
-        cpu_number_of_cores: 1,
-        storage_capacity__gb: 1,
-        manufacturer: 1,
-        country: 1,
-        wireless_charging: 1,
-        NFC: 1,
-        update_frequency: 1,
-        esim: 1
-      } as ITableProperty
+        manufacturer: 'Производитель',
+        general_year: 'Год релиза',
+        display_size__inch: 'Диагональ экрана (дюйм)',
+        cpu_type: 'Тип CPU',
+        cpu_number_of_cores: 'Количество процессоров',
+        storage_capacity__gb: 'Объем памяти',
+        country: 'Страна-производитель',
+        wireless_charging: 'Поддержка беспроводной зарядки',
+        NFC: 'NFC',
+        update_frequency: 'Частота обновления экрана',
+        esim: 'Поддержка eSIM'
+      } as ITableProperty,
+      contentComparsion: 'Показать различия' as string
     }
   },
   computed: {

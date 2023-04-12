@@ -1,7 +1,14 @@
 <template>
-        <img
-          class="img-item"
-          :src = "url">
+        <div class="box-img">
+          <img
+            class="img-item"
+            ref = "img-item"
+            :src = "url" >
+          <div
+            class = "loader"
+            v-if = "isLoading" >
+          </div>
+        </div>
         <div class = "name-item">
           {{ name }}
         </div>
@@ -20,6 +27,17 @@ export default defineComponent({
     url: {
       type: String as PropType<string>
     }
+  },
+  data () {
+    return {
+      isLoading: true
+    }
+  },
+  mounted () {
+    const img = this.$refs['img-item'] as HTMLInputElement
+    img.addEventListener('load', () => {
+      this.isLoading = false
+    })
   }
 })
 </script>

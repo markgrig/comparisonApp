@@ -22,17 +22,17 @@ export interface IItem {
 }
 
 export interface ITableProperty {
-    general_year: number
-    display_size__inch: number
-    cpu_type: number
-    cpu_number_of_cores: number
-    storage_capacity__gb: number
-    manufacturer: number
-    country: number
-    wireless_charging: number
-    NFC: number
-    update_frequency: number
-    esim: number
+    general_year: string
+    display_size__inch: string
+    cpu_type: string
+    cpu_number_of_cores: string
+    storage_capacity__gb: string
+    manufacturer: string
+    country: string
+    wireless_charging: string
+    NFC: string
+    update_frequency: string
+    esim: string
 }
 
 

@@ -1,0 +1,41 @@
+
+.box-topic {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+  }
+  .topic {
+      margin-left: 10%;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 60px;
+      letter-spacing: 0.02em;
+
+      color: #828286;
+    }
+
+    .placholder-counter {
+        margin: 20px 5px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 60px;
+        color: #0D5ADC;
+      }
+
+    .counter-i {
+      margin: 20px 5px;
+    }
+
+    .counter-i:hover {
+      cursor: pointer;
+    }
+
+    .box-number-comparsion {
+      display: flex;
+      justify-content: end;
+      margin: 0 10%;
+    }

@@ -1,10 +1,17 @@
 <template>
-        <ItemsView
-          :items = "gettedItems">
-        </ItemsView>
-        <div v-if = "isLoadingItems">
-          Loading...
-        </div>
+      <NumberComparsion
+        :number = "numberComparsion"
+        :nameItems = "query?.name"
+        :placholderCounter = "placholderCounter">
+      </NumberComparsion>
+      <ItemsView
+        :items = "gettedItems">
+      </ItemsView>
+      <div
+        class = "loading-items"
+        v-if = "isLoadingItems">
+        Loading...
+      </div>
 </template>
 
 <script lang="ts">
@@ -14,22 +21,26 @@ import type { PropType } from 'vue'
 import { IQuery, IItem } from '@/index'
 import getItems from './helper/getItems'
 import ItemsView from './components/ItemsView/index.vue'
+import NumberComparsion from './components/NumberComparsion/index.vue'
 
 export default defineComponent({
   name: 'ItemsPage',
   components: {
-    ItemsView
+    ItemsView,
+    NumberComparsion
   },
   props: {
     query: Object as PropType<IQuery>
   },
   data () {
     return {
-      gettedItems: [] as Array<IItem>
+      gettedItems: [] as Array<IItem>,
+      numberComparsion: 6 as number,
+      placholderCounter: 'Отобразить товары: ' as string
     }
   },
   computed: {
-    numberItems () {
+    numberItems ():number {
       return Object.keys(this.gettedItems).length
     },
     isLoadingItems () {
