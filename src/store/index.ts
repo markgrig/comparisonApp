@@ -57,10 +57,14 @@ export const store = createStore({
       const ids = state.comparison.displayItemsId
       const map = state.comparison.mappingIdIndex
 
-      ids.forEach((id:number) => {
-        items.splice(map[id], 1)
+      const dispayIndex = ids.map((key) => {
+        return map[key]
       })
-      console.log(items)
+
+      const sortedIndexs = Object.values(dispayIndex).sort((a, b) => b - a)
+      sortedIndexs.forEach((i) => {
+        items.splice(i, 1)
+      })
 
       if (!userQuery) { return items }
       return items.filter((el) => { return el.name.indexOf(userQuery) !== -1 })

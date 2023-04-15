@@ -1,16 +1,16 @@
 <template>
-  <div class = "box-topic">
+  <div class="box-topic">
     <div class="topic">
        {{ nameItems }}
   </div>
-  <div class = "box-number-comparsion">
+  <div class="box-number-comparsion">
       <div
-        class= "placholder-counter">
+        class="placholder-counter">
         {{ placholderCounter }}
           <nobr
-            class= "placholder-counter counter-i"
+            class="placholder-counter counter-i"
             v-for="i in 6"
-            :key = "i">
+            :key="i">
             <nobr v-if="i != 1" @click = "clickNumber($event)" :value = "i">
               {{ i }}
             </nobr>
