@@ -1,38 +1,48 @@
 <template>
-  <div class = "body-comprasion">
+  <div>
     <table class = "items-table">
       <tr>
           <th class = "title-box">
             <ComparsionItems
-              :content = "contentComparsion">
+              :content = "contentComparsion"
+              @checkout = "compareItems">
             </ComparsionItems>
           </th>
           <th
             class = "element-box"
-            v-for = "el, i in itemsNew"
+            v-for = "el, i in items"
             :key="i">
               <ItemsCard
-                v-if = "i<6"
+                :index = "i"
                 :name = "el.name"
-                :url = "el.img">
+                :url = "el.img"
+                :id = "el.id">
               </ItemsCard>
           </th>
       </tr>
-
+    </table>
+    <table class = "prop-table">
       <tr
       v-for = "elCol, keyCol in rowsTitle"
           :key="keyCol">
-          <td class = "title-box title-propetry" > {{ elCol  }} </td>
-          <td
+          <td v-show = "isShowCol[keyCol]" class = "title-box title-propetry" > {{ elCol  }} </td>
+
+            <td
             class = "element-box"
-            v-for = "elRow, keyRow in itemsNew"
+            v-for = "elRow, keyRow in items"
+            v-show = "isShowCol[keyCol]"
               :key="keyRow">
-                <div v-if = "keyRow<6">
-                  {{ elRow.main[keyCol]}}
+                <div>
+
+                  {{ getTableElement(elRow.main[keyCol]) }}
+                  <IconBoleanCheck
+                    v-if = "isBoolean(elRow.main[keyCol])"
+                      :isTrue = "elRow.main[keyCol]">
+                  </IconBoleanCheck>
                 </div>
-          </td>
+            </td>
       </tr>
-</table>
+    </table>
   </div>
 </template>
 
@@ -41,13 +51,17 @@ import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import ItemsCard from './ItemsCard/index.vue'
 import ComparsionItems from '../ComparsionItems/index.vue'
+import IconBoleanCheck from '../IconBoleanCheck/index.vue'
 import { IItem, ITableProperty } from '@/index'
+
+type tableElement = string | number | boolean
 
 export default defineComponent({
   name: 'ItemsView',
   components: {
     ItemsCard,
-    ComparsionItems
+    ComparsionItems,
+    IconBoleanCheck
   },
   props: {
     items: {
@@ -69,15 +83,73 @@ export default defineComponent({
         update_frequency: 'Частота обновления экрана',
         esim: 'Поддержка eSIM'
       } as ITableProperty,
-      contentComparsion: 'Показать различия' as string
+      contentComparsion: 'Показать различия' as string,
+      isCompariosItems: false,
+      test: {}
     }
   },
   computed: {
-    itemsNew ():any {
-      if (this.items) {
-        return this.items.filter((el, i) => i < 6)
+    isShowCol () {
+      if (this.isCompariosItems && this.items) {
+        return this.getComporiosObj(this.items)
       }
-      return []
+
+      const obj = {} as {
+        [word: string]: boolean
+      }
+
+      Object.keys(this.rowsTitle).forEach((el) => {
+        obj[el] = true
+      })
+      return obj
+    }
+  },
+  methods: {
+    compareItems (isComparios:boolean) {
+      console.log(123)
+
+      this.isCompariosItems = isComparios
+    },
+    getComporiosObj (items:IItem[]):any {
+      const comparios = {} as {
+        [word: string]: [string | number | boolean] | []
+      }
+
+      const comporiosObj = {} as {
+        [word: string]: boolean
+      }
+
+      items.forEach((item, i) => {
+        const keys = Object.keys(item.main)
+        keys.forEach((key) => {
+          if (!comparios[key]) comparios[key] = []
+          comparios[key][i] = item.main[key]
+        })
+      })
+
+      const keys = Object.keys(comparios)
+      const isDifferenceArray = keys.forEach((key) => {
+        const firstElement = comparios[key][0]
+        const isDifferences = comparios[key].some((element) => {
+          return element !== firstElement
+        })
+        comporiosObj[key] = isDifferences
+      })
+
+      console.log(keys, isDifferenceArray)
+      return comporiosObj
+    },
+    getTableElement (value:tableElement):tableElement {
+      if (this.isBoolean(value)) {
+        return ''
+      }
+      return value
+    },
+    isBoolean (value:tableElement):boolean {
+      if (typeof value === 'boolean') {
+        return true
+      }
+      return false
     }
   }
 })

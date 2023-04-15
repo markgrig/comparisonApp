@@ -55,24 +55,6 @@
             }
         },
         {
-            "id": 231,
-            "name": "Apple iPhone 12 Mini",
-            "img": "https://images.versus.io/objects/apple-iphone-12-mini.front.variety.1602615252701.jpg",
-            "main": {
-                "general_year": 2020,
-                "cpu_type": "A14 Bionic Chip",
-                "cpu_number_of_cores": 6,
-                "display_size__inch": 5.4,
-                "storage_capacity__gb": 64,
-                "manufacturer": "Apple",
-                "country": "Китай",
-                "wireless_charging" : true,
-                "NFC": true,
-                "update_frequency": 60,
-                "esim": true
-            }
-        },
-        {
             "id": 116,
             "name": "Apple iPhone 14",
             "img": "https://images.versus.io/objects/apple-iphone-14.front.variety.1662576114127.jpg",
@@ -245,24 +227,6 @@
                 "display_size__inch": 6.7,
                 "storage_capacity__gb": 512,
                 "manufacturer": "Apple",
-                "country": "Китай",
-                "wireless_charging" : true,
-                "NFC": true,
-                "update_frequency": 60,
-                "esim": true
-            }
-        },
-        {
-            "id": 2578,
-            "name": "Xiaomi Poco X5",
-            "img": "https://versus.com/ru/xiaomi-poco-x5",
-            "main": {
-                "general_year": 2023,
-                "cpu_type": "Qualcomm Snapdragon 778G",
-                "cpu_number_of_cores": 8,
-                "display_size__inch": 6.67,
-                "storage_capacity__gb": 128,
-                "manufacturer": "",
                 "country": "Китай",
                 "wireless_charging" : true,
                 "NFC": true,

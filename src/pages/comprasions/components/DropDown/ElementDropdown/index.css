@@ -1,33 +1,39 @@
-.box-img {
+.box {
+    position: relative;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.img-boxs {
     position: relative;
 }
 
-.img-item-left-pannel {
-    z-index: 10;
-    position: absolute;
-    right: calc(50% - 70px);
-    bottom: 30px;
+.ico-change {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
 }
 
-.img-item {
-    height: 120px;
+.img-items {
+    height: 50px;
     width: auto;
+    margin: 0 20px;
     margin-bottom: 10px;
 }
 
-.name-item {
+.name-items {
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 18px;
-    line-height: 21px;
-    text-align: center;
-    color: #3B4157;
+    line-height: 40px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
 
-    margin-bottom: 50px;
+color: #000000;
 }
 
-.loader {
+.loaders {
     position: absolute;
     left: calc(50% - 15px);
     top:  calc(50% - 15px);
@@ -51,7 +57,7 @@
             mask: var(--_m);
     -webkit-mask-composite: destination-in;
             mask-composite: intersect;
-    animation: load 1s infinite steps(var(--n));
+    animation: loads 1s infinite steps(var(--n));
   }
-  @keyframes load {to{transform: rotate(1turn)}}
+  @keyframes loads {to{transform: rotate(1turn)}}
 

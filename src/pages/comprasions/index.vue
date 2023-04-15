@@ -2,7 +2,8 @@
       <NumberComparsion
         :number = "numberComparsion"
         :nameItems = "query?.name"
-        :placholderCounter = "placholderCounter">
+        :placholderCounter = "placholderCounter"
+        @clickNumber = "changeNumber">
       </NumberComparsion>
       <ItemsView
         :items = "gettedItems">
@@ -18,8 +19,8 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
-import { IQuery, IItem } from '@/index'
-import getItems from './helper/getItems'
+import { IQuery } from '@/index'
+import { useStore } from '@/store/index'
 import ItemsView from './components/ItemsView/index.vue'
 import NumberComparsion from './components/NumberComparsion/index.vue'
 
@@ -29,17 +30,32 @@ export default defineComponent({
     ItemsView,
     NumberComparsion
   },
+  setup () {
+    const store = useStore()
+    return {
+      store
+    }
+  },
   props: {
     query: Object as PropType<IQuery>
   },
   data () {
     return {
-      gettedItems: [] as Array<IItem>,
-      numberComparsion: 6 as number,
+      defultNumberComparsion: 3 as number,
       placholderCounter: 'Отобразить товары: ' as string
     }
   },
   computed: {
+    gettedItems () {
+      return this.store.getters.displayItems as Array<any>
+    },
+    numberComparsion ():number {
+      const lenIds = this.store.state.comparison.displayItemsId.length
+      if (!lenIds) {
+        return this.defultNumberComparsion
+      }
+      return this.store.state.comparison.displayItemsId.length + 1
+    },
     numberItems ():number {
       return Object.keys(this.gettedItems).length
     },
@@ -52,7 +68,21 @@ export default defineComponent({
   },
   async mounted () {
     if (this.query) {
-      this.gettedItems = await getItems(this.query?.url) as Array<IItem>
+      this.store.dispatch('downloadItems', this.query.url)
+    }
+  },
+  methods: {
+    changeNumber (num:number) {
+      const numberItems = Number(this.numberItems)
+      if (num > this.numberItems) {
+        for (let i = num; i > numberItems; i--) {
+          this.store.commit('addDisplayItem')
+          console.log(i, this.numberItems)
+        }
+      }
+      if (num < this.numberItems) {
+        for (let i = num; i < numberItems; i++) this.store.commit('deleteDisplayItem')
+      }
     }
   }
 })

@@ -3,6 +3,7 @@
     <input
       type="checkbox"
       class= "comparsion-checkbox"
+      v-model="checkout"
       >
     <div class="content-checkbox">
       {{ content }}
@@ -13,11 +14,27 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+type ObjectData = {
+  id: number,
+  name: string,
+  [word: string]: string | number | boolean
+}
 
 export default defineComponent({
   name: 'ComparsionItems',
   props: {
     content: String
+  },
+  data () {
+    return {
+      comparsion: this.content,
+      checkout: false
+    }
+  },
+  watch: {
+    checkout (newValue) {
+      this.$emit('checkout', newValue)
+    }
   }
 })
 </script>

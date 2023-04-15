@@ -62,7 +62,7 @@ export default defineComponent({
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400@500@900&family=Roboto&display=swap');;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Roboto&display=swap');;
 #app {
   font-family: 'Roboto';
   font-weight: 500;
