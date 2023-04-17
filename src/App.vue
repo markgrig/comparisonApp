@@ -1,31 +1,31 @@
 <template>
   <SideBar
-    :pannelData = "pannelData">
+    :menu = "menu">
   </SideBar>
-  <Comprasion
+  <ComprasionItems
     :query = items[0]>
-  </Comprasion>
+  </ComprasionItems>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import SideBar from './components/Sidebar/index.vue'
-import Comprasion from './pages/comprasions/index.vue'
+import ComprasionItems from './pages/ComparisonItems/index.vue'
 import { IQuery } from './index'
 
 export default defineComponent({
   name: 'App',
   components: {
     SideBar,
-    Comprasion
+    ComprasionItems
   },
   data () {
     return {
-      pannelData: {
-        leftPannel: [
+      menu: {
+        left: [
           { text: 'Каталог' }
         ],
-        rightPannel: [
+        right: [
           {
             text: 'Сравнение',
             style: {

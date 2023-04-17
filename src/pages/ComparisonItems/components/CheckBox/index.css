@@ -1,0 +1,23 @@
+.owerflow-checkbox {
+  display: flex;
+  margin-top: 158px;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.checkbox-content {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #0D5ADC;
+
+}
+
+@media (max-width: 700px) {
+  .owerflow-checkbox {
+    margin-top: 0px;;
+  }
+}

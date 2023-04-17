@@ -8,6 +8,7 @@ type ObjectData = {
   main: {
     [word: string]: string | number | boolean
   }
+  split?: boolean
 }
 
 type mapObject = {
@@ -21,7 +22,6 @@ type State = {
     displayItemsId: Array<number>
     defaultItems: number
     userQuery: string
-    isShowSearch: boolean
   }
 }
 
@@ -39,8 +39,7 @@ export const store = createStore({
       displayItemsId: [],
       searchItems: {},
       defaultItems: 3,
-      userQuery: '',
-      isShowSearch: false
+      userQuery: ''
     }
   } as State,
   getters: {
@@ -62,8 +61,9 @@ export const store = createStore({
       })
 
       const sortedIndexs = Object.values(dispayIndex).sort((a, b) => b - a)
-      sortedIndexs.forEach((i) => {
-        items.splice(i, 1)
+
+      sortedIndexs.forEach((sort, i) => {
+        items.splice(sort, 1)
       })
 
       if (!userQuery) { return items }
@@ -110,12 +110,10 @@ export const store = createStore({
         let isIndexFinding = true
         let newIndex = lastIndex
 
-        for (newIndex = lastIndex + 1; isIndexFinding; newIndex++) {
-          isIndexFinding = ids.every((el) => { return map[el] === newIndex })
-          console.log('store', isIndexFinding, ids, map[newIndex])
+        for (newIndex = lastIndex; isIndexFinding; newIndex++) {
+          isIndexFinding = ids.some((el) => { return el === items[newIndex].id })
         }
-
-        ids.push(items[newIndex].id)
+        ids.push(items[newIndex - 1].id)
       } else {
         ids.push(0)
       }
@@ -123,9 +121,6 @@ export const store = createStore({
     deleteDisplayItem (state: State) {
       const ids = state.comparison.displayItemsId
       ids.pop()
-    },
-    showSearch (state: State, val:boolean) {
-      state.comparison.isShowSearch = val
     }
   },
   actions: {

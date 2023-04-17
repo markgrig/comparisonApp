@@ -1,23 +1,23 @@
 <template>
-  <header class= "saidbar-header">
+  <header class= "sidebar-menu">
 
-    <img class= "ico bars"
+    <img class= "sidebar-ico --bar-hide"
       src="@/assets/ico/solidBars.png"
       alt="no loaded solidBar.png"
-      @click = "clickModelMenu()">
+      @click = "clickMobileMenu ()">
 
-    <div :class = "BoxPannel" >
+    <div :class = "menuBox" >
 
-      <div class="left-pannel">
-        <ElementList
-          :elementData ="pannelData?.leftPannel">
-        </ElementList>
+      <div class="left-menu">
+        <MenuOption
+          :options ="menu?.left">
+        </MenuOption>
       </div>
 
-      <div class="right-pannel">
-        <ElementList
-          :elementData ="pannelData?.rightPannel">
-        </ElementList>
+      <div class="right-menu">
+        <MenuOption
+          :options ="menu?.right">
+        </MenuOption>
       </div>
 
     </div>
@@ -29,40 +29,37 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
-import ElementList from './ElementList/index.vue'
-import type { className } from './index'
-import { IPannels, IMobileMenu } from './index'
+import MenuOption from './MenuOption/index.vue'
+import { IMenu } from './index'
 
 export default defineComponent({
-  name: 'SaidbarHeader',
+  name: 'SideBar',
   components: {
-    ElementList
+    MenuOption
   },
   props: {
-    pannelData: {
-      type: Object as PropType<IPannels>
+    menu: {
+      type: Object as PropType<IMenu>
     }
   },
   data () {
     return {
-      mobileMenu: {
-        isOpen: false
-      } as IMobileMenu
+      isOpenMobileMenu: false as boolean
     }
   },
   computed: {
-    BoxPannel ():className {
-      const isOpen:boolean = this.mobileMenu.isOpen
+    menuBox ():string {
+      const isOpen:boolean = this.isOpenMobileMenu
 
       if (isOpen) {
-        return 'box-pannel --open-box'
+        return 'menu-box --open-mb-menu'
       }
-      return 'box-pannel --close-box'
+      return 'menu-box --close-mb-menu'
     }
   },
   methods: {
-    clickModelMenu () {
-      this.mobileMenu.isOpen = !this.mobileMenu.isOpen
+    clickMobileMenu () {
+      this.isOpenMobileMenu = !this.isOpenMobileMenu
     }
   }
 })

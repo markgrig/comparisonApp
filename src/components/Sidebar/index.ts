@@ -1,4 +1,4 @@
-export interface IElement{
+export interface IMenuOption{
     text: string
     style?: {
       uppercase?: boolean
@@ -6,13 +6,7 @@ export interface IElement{
     icoUrl?: string
 }
 
-export interface IPannels {
-  leftPannel: Array<IElement>
-  rightPannel: Array<IElement>
+export interface IMenu {
+  left: Array<IMenuOption>
+  right: Array<IMenuOption>
 }
-
-export interface IMobileMenu {
-  isOpen: boolean,
-}
-
-export type className = string

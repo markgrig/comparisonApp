@@ -1,24 +1,26 @@
 <template>
         <div class="box-img">
-          <img
-            class="img-item"
-            ref = "img-item"
-            :src = "url" >
               <div class = "img-item-left-pannel">
                 <DropDown
                   v-if = "!isLoading"
                   :index = "index"
-                  :items = "items"
-                  :idOldItem = "id">
+                  :items = "searchingItems"
+                  :directionDropDown = "directionDropDown"
+                  :idOldItem = "id"
+                  @setQuery = "setQuery">
                 </DropDown>
               </div>
+        </div>
+        <img
+            class="img-item"
+            ref = "img-item"
+            :src = "url" >
           <div
             class = "loader"
             v-if = "isLoading" >
           </div>
-        </div>
         <div class = "name-item">
-          {{ name }} {{ index }}
+          {{ name }}
         </div>
 
 </template>
@@ -26,12 +28,20 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import DropDown from '@/pages/comprasions/components/DropDown/index.vue'
+import DropDown from '@/pages/ComparisonItems/components/DropDown/index.vue'
+import { useStore } from '@/store/index'
+import { IItem } from '@/index'
 
 export default defineComponent({
   name: 'ItemsCard',
   components: {
     DropDown
+  },
+  setup () {
+    const store = useStore()
+    return {
+      store
+    }
   },
   props: {
     name: {
@@ -57,6 +67,23 @@ export default defineComponent({
     img.addEventListener('load', () => {
       this.isLoading = false
     })
+  },
+  computed: {
+    searchingItems ():IItem[] {
+      return this.store.getters.filterItemsbyQuery
+    },
+    directionDropDown () {
+      const numberItems = this.store.getters.displayItems.length
+      if (this.index && this.index >= numberItems / 2) {
+        return 'right'
+      }
+      return 'left'
+    }
+  },
+  methods: {
+    setQuery (query:string) {
+      this.store.commit('setQuery', query)
+    }
   }
 })
 </script>

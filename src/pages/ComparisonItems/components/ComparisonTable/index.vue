@@ -1,47 +1,50 @@
 <template>
   <div>
-    <table class = "items-table">
-      <tr>
-          <th class = "title-box">
-            <ComparsionItems
-              :content = "contentComparsion"
-              @checkout = "compareItems">
-            </ComparsionItems>
-          </th>
-          <th
-            class = "element-box"
-            v-for = "el, i in items"
-            :key="i">
-              <ItemsCard
-                :index = "i"
-                :name = "el.name"
-                :url = "el.img"
-                :id = "el.id">
-              </ItemsCard>
-          </th>
-      </tr>
-    </table>
-    <table class = "prop-table">
-      <tr
+    <div class = "items-view-table table-row">
+      <div class = "name-prop-box check-row">
+        <div class = "table-text">
+          <CheckBox
+            :content = "contentComparsion"
+            @checkout = "compareItems">
+          </CheckBox>
+        </div>
+      </div>
+      <div
+        class = "table-el item-view img-mobile"
+        v-for = "el, i in items"
+        :key="i">
+          <ItemsCard
+            :index = "i"
+            :name = "el.name"
+            :url = "el.img"
+            :id = "el.id">
+          </ItemsCard>
+      </div>
+    </div>
+    <table class = "properties-table">
+      <div class= "table-row"
       v-for = "elCol, keyCol in rowsTitle"
           :key="keyCol">
-          <td v-show = "isShowCol[keyCol]" class = "title-box title-propetry" > {{ elCol  }} </td>
+          <div v-show = "isShowCol[keyCol]" class = "name-prop-box title-propetry" >
+            <div class = "table-text">
+              {{ elCol  }}
+            </div>
+          </div>
 
-            <td
-            class = "element-box"
+            <div
+            class = "table-el el-b-mobile"
             v-for = "elRow, keyRow in items"
             v-show = "isShowCol[keyCol]"
               :key="keyRow">
-                <div>
-
-                  {{ getTableElement(elRow.main[keyCol]) }}
-                  <IconBoleanCheck
+                  <div class="table-text">
+                    {{ getTableElement(elRow.main[keyCol], keyCol) }}
+                  <IcoIsTrue
                     v-if = "isBoolean(elRow.main[keyCol])"
-                      :isTrue = "elRow.main[keyCol]">
-                  </IconBoleanCheck>
-                </div>
-            </td>
-      </tr>
+                      :isTrue = "isBoolean(elRow.main[keyCol])">
+                  </IcoIsTrue>
+                  </div>
+            </div>
+      </div>
     </table>
   </div>
 </template>
@@ -50,8 +53,8 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import ItemsCard from './ItemsCard/index.vue'
-import ComparsionItems from '../ComparsionItems/index.vue'
-import IconBoleanCheck from '../IconBoleanCheck/index.vue'
+import CheckBox from '../CheckBox/index.vue'
+import IcoIsTrue from '../IcoIsTrue/index.vue'
 import { IItem, ITableProperty } from '@/index'
 
 type tableElement = string | number | boolean
@@ -60,8 +63,8 @@ export default defineComponent({
   name: 'ItemsView',
   components: {
     ItemsCard,
-    ComparsionItems,
-    IconBoleanCheck
+    CheckBox,
+    IcoIsTrue
   },
   props: {
     items: {
@@ -139,11 +142,21 @@ export default defineComponent({
       console.log(keys, isDifferenceArray)
       return comporiosObj
     },
-    getTableElement (value:tableElement):tableElement {
+    getTableElement (value:tableElement, key:string|number):tableElement {
       if (this.isBoolean(value)) {
         return ''
       }
-      return value
+
+      switch (key) {
+        case 'display_size__inch':
+          return `${value}`.replace('.', ',')
+        case 'storage_capacity__gb':
+          return `${value} Гб`
+        case 'update_frequency':
+          return `${value} Гц`
+        default:
+          return value
+      }
     },
     isBoolean (value:tableElement):boolean {
       if (typeof value === 'boolean') {

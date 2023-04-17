@@ -7,7 +7,6 @@
             "main": {
                 "general_year": 2015,
                 "display_size__inch": 4.7,
-                "cpu_type": "Apple A9",
                 "cpu_number_of_cores": 2,
                 "storage_capacity__gb": 64,
                 "manufacturer": "Apple",
@@ -25,7 +24,6 @@
             "main": {
                 "general_year": 2021,
                 "display_size__inch": 6.1,
-                "cpu_type": "A15 Bionic chip",
                 "cpu_number_of_cores": 6,
                 "storage_capacity__gb": 128,
                 "manufacturer": "Apple",
@@ -42,7 +40,6 @@
             "img": "https://images.versus.io/objects/apple-iphone-12.front.variety.1603823796608.jpg",
             "main": {
                 "general_year": 2020,
-                "cpu_type": "A14 Bionic Chip",
                 "cpu_number_of_cores": 6,
                 "display_size__inch": 6.1,
                 "storage_capacity__gb": 64,
@@ -60,7 +57,6 @@
             "img": "https://images.versus.io/objects/apple-iphone-14.front.variety.1662576114127.jpg",
             "main": {
                 "general_year": 2022,
-                "cpu_type": "A15 Bionic chip",
                 "cpu_number_of_cores": 6,
                 "display_size__inch": 6.1,
                 "storage_capacity__gb": 512,
@@ -78,7 +74,6 @@
             "img": "https://images.versus.io/objects/google-pixel-6.front.variety.1634674732794.jpg",
             "main": {
                 "general_year": 2021,
-                "cpu_type": "2x 2.8 GHz ARM Cortex-X1",
                 "cpu_number_of_cores": 8,
                 "display_size__inch": 6.4,
                 "storage_capacity__gb": 128,
@@ -91,30 +86,11 @@
             }
         },
         {
-            "id": 70,
-            "name": "Fairphone 4",
-            "img": "https://images.versus.io/objects/fairphone-4.front.variety.1633536633478.jpg",
-            "main": {
-                "general_year": 2021,
-                "cpu_type": "Qualcomm Snapdragon 750G",
-                "cpu_number_of_cores": 8,
-                "display_size__inch": 6.3,
-                "storage_capacity__gb": 128,
-                "manufacturer": "Fairphone",
-                "country": "Амстердам",
-                "wireless_charging" : false,
-                "NFC": true,
-                "update_frequency": 60,
-                "esim": true
-            }
-        },
-        {
             "id": 72,
             "name": "Apple iPhone 12 Pro",
             "img": "https://images.versus.io/objects/apple-iphone-12-pro.front.variety.1603823831678.jpg",
             "main": {
                 "general_year": 2020,
-                "cpu_type": "Apple",
                 "cpu_number_of_cores": 6,
                 "display_size__inch": 6.1,
                 "storage_capacity__gb": 256,
@@ -132,7 +108,6 @@
             "img": "https://images.versus.io/objects/samsung-galaxy-a52.front.variety.1615995095386.jpg",
             "main": {
                 "general_year": 2021,
-                "cpu_type": "Qualcomm Snapdragon",
                 "cpu_number_of_cores": 8,
                 "display_size__inch": 6.5,
                 "storage_capacity__gb": 128,
@@ -150,7 +125,6 @@
             "img": "https://images.versus.io/objects/apple-iphone-13.front.variety.1631694414000.jpg",
             "main": {
                 "general_year": 2021,
-                "cpu_type": "Apple",
                 "cpu_number_of_cores": 6,
                 "display_size__inch": 6.7,
                 "storage_capacity__gb": 1024,
@@ -168,7 +142,6 @@
             "img": "https://images.versus.io/objects/samsung-galaxy-a52s-5g.front.variety.1630088917780.jpg",
             "main": {
                 "general_year": 2021,
-                "cpu_type": "Qualcomm Snapdragon",
                 "cpu_number_of_cores": 8,
                 "display_size__inch": 6.5,
                 "storage_capacity__gb": 128,
@@ -186,7 +159,6 @@
             "img": "https://images.versus.io/objects/samsung-galaxy-z-flip4.front.variety.1660141994661.jpg",
             "main": {
                 "general_year": 2022,
-                "cpu_type": "Qualcomm Snapdragon 8+ Gen1",
                 "cpu_number_of_cores": 8,
                 "display_size__inch": 6.7,
                 "storage_capacity__gb": 128,
@@ -204,7 +176,6 @@
             "img": "https://images.versus.io/objects/samsung-galaxy-a32.front.variety.1614359065779.jpg",
             "main": {
                 "general_year": 2021,
-                "cpu_type": "Helio G80",
                 "cpu_number_of_cores": 8,
                 "display_size__inch": 6.5,
                 "storage_capacity__gb": 128,
@@ -222,7 +193,6 @@
             "img": "https://images.versus.io/objects/apple-iphone-13.front.variety.1631694414000.jpg",
             "main": {
                 "general_year": 2021,
-                "cpu_type": "A15 Bionic chip",
                 "cpu_number_of_cores": 6,
                 "display_size__inch": 6.7,
                 "storage_capacity__gb": 512,
@@ -240,7 +210,6 @@
             "img": "https://images.versus.io/objects/apple-iphone-7-plus.front.variety.1576684641045.jpg",
             "main": {
                 "general_year": 2016,
-                "cpu_type": "A10 Fusion",
                 "cpu_number_of_cores": 4,
                 "display_size__inch": 5.5,
                 "storage_capacity__gb": 256,

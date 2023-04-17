@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'IconBoleanCheck',
+  name: 'IcoIsTrue',
   props: {
     isTrue: Boolean
   },

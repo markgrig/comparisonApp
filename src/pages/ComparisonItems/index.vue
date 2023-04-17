@@ -1,13 +1,13 @@
 <template>
-      <NumberComparsion
-        :number = "numberComparsion"
-        :nameItems = "query?.name"
-        :placholderCounter = "placholderCounter"
-        @clickNumber = "changeNumber">
-      </NumberComparsion>
-      <ItemsView
+      <ChipGroup
+        :number = "maxNumberСomparison"
+        :topic = "query?.name"
+        :chipsPlaceholder = "chipsPlaceholder"
+        @clickNumber = "changeNumberСomparison">
+      </ChipGroup>
+      <ComparisonTable
         :items = "gettedItems">
-      </ItemsView>
+      </ComparisonTable>
       <div
         class = "loading-items"
         v-if = "isLoadingItems">
@@ -18,17 +18,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
+import ComparisonTable from './components/ComparisonTable/index.vue'
+import ChipGroup from './components/ChipGroup/index.vue'
+import { useStore } from '@/store/index'
 
 import { IQuery } from '@/index'
-import { useStore } from '@/store/index'
-import ItemsView from './components/ItemsView/index.vue'
-import NumberComparsion from './components/NumberComparsion/index.vue'
 
 export default defineComponent({
   name: 'ItemsPage',
   components: {
-    ItemsView,
-    NumberComparsion
+    ComparisonTable,
+    ChipGroup
   },
   setup () {
     const store = useStore()
@@ -41,20 +41,14 @@ export default defineComponent({
   },
   data () {
     return {
-      defultNumberComparsion: 3 as number,
-      placholderCounter: 'Отобразить товары: ' as string
+      defultNumberСomparison: 3 as number,
+      maxNumberСomparison: 6 as number,
+      chipsPlaceholder: 'Отобразить товары: ' as string
     }
   },
   computed: {
     gettedItems () {
       return this.store.getters.displayItems as Array<any>
-    },
-    numberComparsion ():number {
-      const lenIds = this.store.state.comparison.displayItemsId.length
-      if (!lenIds) {
-        return this.defultNumberComparsion
-      }
-      return this.store.state.comparison.displayItemsId.length + 1
     },
     numberItems ():number {
       return Object.keys(this.gettedItems).length
@@ -67,18 +61,14 @@ export default defineComponent({
     }
   },
   async mounted () {
-    if (this.query) {
-      this.store.dispatch('downloadItems', this.query.url)
-    }
+    if (this.query) this.store.dispatch('downloadItems', this.query.url)
   },
   methods: {
-    changeNumber (num:number) {
-      const numberItems = Number(this.numberItems)
+    changeNumberСomparison (num:number) {
+      const numberItems = this.numberItems
+
       if (num > this.numberItems) {
-        for (let i = num; i > numberItems; i--) {
-          this.store.commit('addDisplayItem')
-          console.log(i, this.numberItems)
-        }
+        for (let i = num; i > numberItems; i--) this.store.commit('addDisplayItem')
       }
       if (num < this.numberItems) {
         for (let i = num; i < numberItems; i++) this.store.commit('deleteDisplayItem')

@@ -1,17 +1,17 @@
-.element {
+.menu-options {
     display: flex;
     margin:  0px 24px;
   }
 
-  .element:hover {
+  .menu-options:hover {
     cursor: pointer;
   }
 
-  .text {
+  .options-text {
     padding: 0 10px;
   }
 
-  .ico {
+  .options-ico  {
     width: 18px;
     aspect-ratio: 1/1;
     margin: auto 10px;
@@ -19,14 +19,12 @@
 
   @media (max-width: 700px) {
 
-    .element  {
+    .menu-options  {
       display: flex;
       margin: 5px 0;
     }
-    .box-pannel>div {
-        margin: 8px 30px;
-    }
-    .ico {
+
+    .options-ico  {
       margin: 0 10px;
     }
 

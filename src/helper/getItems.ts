@@ -8,7 +8,6 @@ export default async function getItems (url:string, header?:object):Promise<obje
 
     type Response = { data: object[] }
     const res:Response = await response.json()
-    console.log(res.data)
 
     return res.data
   } catch {

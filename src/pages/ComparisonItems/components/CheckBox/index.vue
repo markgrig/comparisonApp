@@ -1,11 +1,11 @@
 <template>
-  <div class="box-comparsion-checkbox">
+  <div class="owerflow-checkbox">
     <input
       type="checkbox"
-      class= "comparsion-checkbox"
+      class= "checkbox"
       v-model="checkout"
       >
-    <div class="content-checkbox">
+    <div class="checkbox-content">
       {{ content }}
     </div>
   </div>
@@ -14,11 +14,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-type ObjectData = {
-  id: number,
-  name: string,
-  [word: string]: string | number | boolean
-}
 
 export default defineComponent({
   name: 'ComparsionItems',
@@ -27,7 +22,6 @@ export default defineComponent({
   },
   data () {
     return {
-      comparsion: this.content,
       checkout: false
     }
   },

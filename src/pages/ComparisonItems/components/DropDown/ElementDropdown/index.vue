@@ -1,7 +1,7 @@
 <template>
-        <div class="box">
+        <div class="box-list">
           <img
-            class="ico-change"
+            class="ico-change-item"
             @click="clickIco()"
             :src = "require('@/assets/ico/changer.png')" >
           <div class="img-boxs">
@@ -26,7 +26,7 @@ import { useStore } from '@/store/index'
 import type { PropType } from 'vue'
 
 export default defineComponent({
-  name: 'ElementDropdown',
+  name: 'ItemList',
   props: {
     name: {
       type: String as PropType<string>

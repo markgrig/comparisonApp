@@ -1,5 +1,5 @@
 
-.box-pannel {
+.menu-box {
 
     box-sizing: border-box;
     display: flex;
@@ -11,11 +11,11 @@
     background: #FFFFFF;
     border-bottom: 1px solid #A6A5A9;
     aspect-ratio: 15/1;
-    width: 100vw;
+    width: 100%;
 
   }
 
-  .left-pannel, .right-pannel {
+  .left-menu, .right-menu {
     display: flex;
     font-size: 12px;
     line-height: 14px;
@@ -23,16 +23,13 @@
 
   }
 
-  .left-pannel, .right-pannel>div {
-    display: flex;
-    margin:  0px 24px;
-  }
 
-  .left-pannel, .right-pannel>div:hover {
+
+  .left-menu, .right-menu>div:hover {
     cursor: pointer;
   }
 
-  .box-pannel {
+  .menu-box {
     padding: 3% 8%;
   }
 
@@ -40,34 +37,34 @@
     padding: 0 10px;
   }
 
-  .ico {
+  .sidebar-ico {
     width: 18px;
     aspect-ratio: 1/1;
     margin: auto 10px;
   }
 
-  .left-pannel {
+  .left-menu {
     color: #0D5ADC;
   }
-  .right-pannel {
+  .right-menu {
     color: #3B4157;
   }
 
   .uppercase {
     text-transform: uppercase;
   }
-  .bars {
+  .--bar-hide {
     display: none;
   }
 
   @media (max-width: 700px) {
 
-    .bars {
+    .--bar-hide {
       display: block;
       padding: 10px 20px;
     }
 
-    .saidbar-header {
+    .sidebar-menu {
       box-sizing: border-box;
       position: relative;
       aspect-ratio: 8/1;
@@ -76,7 +73,7 @@
       height: 40px;
       width: 100vw;
     }
-    .box-pannel {
+    .menu-box {
       opacity: 0.99;
       background: #fafafa;
       position: absolute;
@@ -87,27 +84,27 @@
       box-shadow: 2px 2px 3px 1px #3b415750;
     }
 
-    .box-pannel>div {
+    .menu-box >div {
       margin: 8px 30px;
     }
 
-    .box-pannel, .left-pannel, .right-pannel   {
+    .menu-box, .left-menu, .right-menu   {
       flex-direction: column;
       margin: 0;
     }
 
-    .ico {
+    .sidebar-ico {
       margin: 0 10px;
     }
 
-    .--open-box {
-    transition: 0.1s;
-    perspective: 100px;
-    transform: translate(-85vw);
-  }
-
-    .--close-box {
+    .--open-mb-menu {
       transition: 0.2s;
       transform: translate(0vw);
+  }
+
+    .--close-mb-menu {
+      transition: 0.1s;
+      perspective: 100px;
+      transform: translate(-85vw);
     }
   }

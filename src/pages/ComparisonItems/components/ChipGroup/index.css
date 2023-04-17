@@ -1,10 +1,10 @@
 
-.box-topic {
+.chip-group-box {
     display: flex;
     justify-content: space-between;
     margin-top: 60px;
   }
-  .topic {
+  .chip-group-topic {
       margin-left: 10%;
       font-family: 'Roboto';
       font-style: normal;
@@ -16,26 +16,39 @@
       color: #828286;
     }
 
-    .placholder-counter {
+    .chip-group-placegolder {
+        display: flex;
         margin: 20px 5px;
-        font-family: 'Roboto';
+      }
+
+    .chip {
+      margin: 20px 5px;
+      font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
         font-size: 18px;
         line-height: 60px;
         color: #0D5ADC;
-      }
-
-    .counter-i {
-      margin: 20px 5px;
     }
 
-    .counter-i:hover {
+    .chip :hover {
       cursor: pointer;
     }
 
-    .box-number-comparsion {
+    .box-chip {
       display: flex;
       justify-content: end;
       margin: 0 10%;
+    }
+
+    @media (max-width: 700px) {
+
+      .chip-group-box {
+          flex-direction: column;
+          text-align: center;
+      }
+
+      .chip-group-topic {
+        margin: auto;
+      }
     }
