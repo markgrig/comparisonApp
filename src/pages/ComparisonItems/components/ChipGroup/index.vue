@@ -1,32 +1,27 @@
 <template>
   <div class="chip-group-box">
-    <div class="chip-group-topic ">
-       {{
-        topic
-      }}
-  </div>
-  <div class="box-chip">
-      <div
-        class="chip-group-placegolder">
+    <div class="chip-group-topic">
+       {{ topic }}
+    </div>
+    <div class="box-chip">
+      <div class="chip-group">
           <div
             class="chip"
             v-for="i in number"
-            :key="i">
-              <div
-                v-if="i === 1">
-                {{
-                  chipsPlaceholder
-                }}
-              </div>
-              <div
-                v-if="i !== 1"
-                @click = "clickNumber($event)"
-                 :value = "i">
-                {{
-                  i
-                }}
-              </div>
-          </div>
+            :key="i"
+          >
+            <div
+              v-if="i === 1">
+              {{ chipsPlaceholder }}
+            </div>
+            <div
+              v-if="i !== 1"
+              @click = "clickNumber($event)"
+              :value = "i"
+            >
+              {{ i }}
+            </div>
+        </div>
     </div>
   </div>
   </div>

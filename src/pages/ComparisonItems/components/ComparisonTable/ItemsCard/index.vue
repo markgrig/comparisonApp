@@ -14,10 +14,12 @@
         <img
             class="img-item"
             ref = "img-item"
-            :src = "url" >
+            :src = "url"
+        >
           <div
             class = "loader"
-            v-if = "isLoading" >
+            v-if = "isLoading"
+          >
           </div>
         <div class = "name-item">
           {{ name }}

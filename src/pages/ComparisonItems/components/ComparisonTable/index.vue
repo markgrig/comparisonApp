@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--View image and name -->
     <div class = "items-view-table table-row">
       <div class = "name-prop-box check-row">
         <div class = "table-text">
@@ -12,38 +13,46 @@
       <div
         class = "table-el item-view img-mobile"
         v-for = "el, i in items"
-        :key="i">
-          <ItemsCard
-            :index = "i"
-            :name = "el.name"
-            :url = "el.img"
-            :id = "el.id">
-          </ItemsCard>
+        :key="i"
+      >
+        <ItemsCard
+          :index = "i"
+          :name = "el.name"
+          :url = "el.img"
+          :id = "el.id">
+        </ItemsCard>
       </div>
     </div>
+
+    <!--Table of Properties-->
     <table class = "properties-table">
       <div class= "table-row"
-      v-for = "elCol, keyCol in rowsTitle"
-          :key="keyCol">
-          <div v-show = "isShowCol[keyCol]" class = "name-prop-box title-propetry" >
-            <div class = "table-text">
-              {{ elCol  }}
-            </div>
+          v-for = "nameProperty, keyProperty in rowsTitle"
+          :key="keyProperty"
+      >
+        <div
+          v-show = "isValidKey[keyProperty]"
+          class = "name-prop-box title-propetry"
+          >
+          <div class = "table-text">
+            {{ nameProperty  }}
           </div>
+        </div>
 
-            <div
-            class = "table-el el-b-mobile"
-            v-for = "elRow, keyRow in items"
-            v-show = "isShowCol[keyCol]"
-              :key="keyRow">
-                  <div class="table-text">
-                    {{ getTableElement(elRow.main[keyCol], keyCol) }}
-                  <IcoIsTrue
-                    v-if = "isBoolean(elRow.main[keyCol])"
-                      :isTrue = "isBoolean(elRow.main[keyCol])">
-                  </IcoIsTrue>
-                  </div>
-            </div>
+        <div
+          class = "table-el el-b-mobile"
+          v-for = "el, i in items"
+          v-show = "isValidKey[keyProperty]"
+          :key="i"
+        >
+          <div class="table-text">
+            {{ getTableElement(el.main[keyProperty], keyProperty) }}
+            <IcoIsTrue
+              v-if = "isBoolean(el.main[keyProperty])"
+              :isTrue = "isBoolean(el.main[keyProperty])">
+            </IcoIsTrue>
+          </div>
+        </div>
       </div>
     </table>
   </div>
@@ -56,6 +65,7 @@ import ItemsCard from './ItemsCard/index.vue'
 import CheckBox from '../CheckBox/index.vue'
 import IcoIsTrue from '../IcoIsTrue/index.vue'
 import { IItem, ITableProperty } from '@/index'
+import type { booleanDictionary, dictionary } from '@/index'
 
 type tableElement = string | number | boolean
 
@@ -77,7 +87,6 @@ export default defineComponent({
         manufacturer: 'Производитель',
         general_year: 'Год релиза',
         display_size__inch: 'Диагональ экрана (дюйм)',
-        cpu_type: 'Тип CPU',
         cpu_number_of_cores: 'Количество процессоров',
         storage_capacity__gb: 'Объем памяти',
         country: 'Страна-производитель',
@@ -92,9 +101,9 @@ export default defineComponent({
     }
   },
   computed: {
-    isShowCol () {
+    isValidKey () {
       if (this.isCompariosItems && this.items) {
-        return this.getComporiosObj(this.items)
+        return this.isDifferencesForKey(this.items)
       }
 
       const obj = {} as {
@@ -109,38 +118,31 @@ export default defineComponent({
   },
   methods: {
     compareItems (isComparios:boolean) {
-      console.log(123)
-
       this.isCompariosItems = isComparios
     },
-    getComporiosObj (items:IItem[]):any {
-      const comparios = {} as {
-        [word: string]: [string | number | boolean] | []
-      }
-
-      const comporiosObj = {} as {
-        [word: string]: boolean
-      }
+    isDifferencesForKey (items:IItem[]):booleanDictionary {
+      const dictForComparios:dictionary = {}
+      const isDifferencesForKey:booleanDictionary = {}
 
       items.forEach((item, i) => {
         const keys = Object.keys(item.main)
+
         keys.forEach((key) => {
-          if (!comparios[key]) comparios[key] = []
-          comparios[key][i] = item.main[key]
+          if (!dictForComparios[key]) dictForComparios[key] = []
+          dictForComparios[key][i] = item.main[key]
         })
       })
 
-      const keys = Object.keys(comparios)
-      const isDifferenceArray = keys.forEach((key) => {
-        const firstElement = comparios[key][0]
-        const isDifferences = comparios[key].some((element) => {
+      const keys = Object.keys(dictForComparios)
+      keys.forEach((key) => {
+        const firstElement = dictForComparios[key][0]
+        const isDifferences = dictForComparios[key].some((element) => {
           return element !== firstElement
         })
-        comporiosObj[key] = isDifferences
+        isDifferencesForKey[key] = isDifferences
       })
 
-      console.log(keys, isDifferenceArray)
-      return comporiosObj
+      return isDifferencesForKey
     },
     getTableElement (value:tableElement, key:string|number):tableElement {
       if (this.isBoolean(value)) {

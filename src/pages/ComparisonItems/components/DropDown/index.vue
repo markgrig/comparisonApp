@@ -1,16 +1,18 @@
 <template>
         <div class = "activator-dr-down"
             :data-uid = "uid"
-            ref = "activator-dr-down">
+            ref = "activator-dr-down"
+        >
           <div
             v-show="isShowDropdown"
-              :data-uid = "uid"
-              :class = "classDropDown">
-              <input
-                v-model="query"
-                class="input-search"
-                type="text"
-                placeholder="Поиск">
+            :data-uid = "uid"
+            :class = "classDropDown">
+            <input
+              v-model="query"
+              class="input-search"
+              type="text"
+              placeholder="Поиск"
+          >
 
             <div class="list-dropdown">
               <ItemList
@@ -20,15 +22,17 @@
                 :name="el.name"
                 :url = "el.img"
                 :id = "el.id">
-            </ItemList>
+              </ItemList>
             </div>
           </div>
+
           <img
             class="img-activator"
             :data-uid = "uid"
             :src="require('@/assets/ico/slider.png')"
             alt="не загрузился slider.png"
-            @click="clickSlider()">
+            @click="clickSlider()"
+          >
         </div>
 </template>
 
@@ -47,6 +51,7 @@ export default defineComponent({
     const bodyElement = document.querySelector('body') as HTMLBodyElement
     bodyElement.addEventListener('click', (event:Event) => {
       const target = event.target as Element
+
       if (target) {
         if (!target.closest(`.img-activator[data-uid=${this.uid}]`)) {
           if (!target.closest(`.dropdown[data-uid=${this.uid}]`)) {
@@ -97,7 +102,7 @@ export default defineComponent({
   },
   watch: {
     query (newValue) {
-      this.$emit('setQuery', newValue)
+      this.$emit('setQuery', newValue.trim())
     }
   }
 })

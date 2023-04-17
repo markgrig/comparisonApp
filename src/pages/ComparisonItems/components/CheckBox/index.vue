@@ -4,12 +4,11 @@
       type="checkbox"
       class= "checkbox"
       v-model="checkout"
-      >
+    >
     <div class="checkbox-content">
       {{ content }}
     </div>
   </div>
-
 </template>
 
 <script lang="ts">

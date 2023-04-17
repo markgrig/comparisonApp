@@ -1,27 +1,23 @@
 <template>
   <header class= "sidebar-menu">
-
     <img class= "sidebar-ico --bar-hide"
       src="@/assets/ico/solidBars.png"
       alt="no loaded solidBar.png"
-      @click = "clickMobileMenu ()">
+      @click = "clickMobileMenu ()"
+    >
 
     <div :class = "menuBox" >
-
       <div class="left-menu">
         <MenuOption
           :options ="menu?.left">
         </MenuOption>
       </div>
-
       <div class="right-menu">
         <MenuOption
           :options ="menu?.right">
         </MenuOption>
       </div>
-
     </div>
-
   </header>
 </template>
 

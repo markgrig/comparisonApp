@@ -2,8 +2,8 @@
         <div
           class="menu-options"
           v-for="el, i in options"
-          :key="i">
-
+          :key="i"
+        >
           <div class="options-text">
             {{ styleText(el.text, el) }}
           </div>
@@ -11,7 +11,7 @@
             v-if="el?.icoUrl"
             :src="el?.icoUrl"
             :alt="'no loaded ico ' + el?.icoUrl">
-          </div>
+        </div>
 </template>
 
 <script lang="ts">

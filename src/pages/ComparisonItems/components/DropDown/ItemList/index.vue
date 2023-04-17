@@ -3,15 +3,18 @@
           <img
             class="ico-change-item"
             @click="clickIco()"
-            :src = "require('@/assets/ico/changer.png')" >
+            :src = "require('@/assets/ico/changer.png')"
+          >
           <div class="img-boxs">
             <img
               class="img-items"
               ref = "img-items"
-              :src = "url" >
+              :src = "url"
+            >
             <div
               class = "loaders"
-                v-if = "isLoading" >
+              v-if = "isLoading"
+            >
             </div>
           </div>
           <div class = "name-items">
