@@ -87,13 +87,14 @@ export default defineComponent({
         manufacturer: 'Производитель',
         general_year: 'Год релиза',
         display_size__inch: 'Диагональ экрана (дюйм)',
-        cpu_number_of_cores: 'Количество процессоров',
-        storage_capacity__gb: 'Объем памяти',
         country: 'Страна-производитель',
-        wireless_charging: 'Поддержка беспроводной зарядки',
-        NFC: 'NFC',
+        storage_capacity__gb: 'Объем памяти',
         update_frequency: 'Частота обновления экрана',
-        esim: 'Поддержка eSIM'
+        NFC: 'NFC',
+        esim: 'Поддержка eSIM',
+        wireless_charging: 'Поддержка беспроводной зарядки',
+        price: 'Цена',
+        cpu_number_of_cores: 'Количество процессоров'
       } as ITableProperty,
       contentComparsion: 'Показать различия' as string,
       isCompariosItems: false,
@@ -156,6 +157,8 @@ export default defineComponent({
           return `${value} Гб`
         case 'update_frequency':
           return `${value} Гц`
+        case 'price':
+          return `${value} р`
         default:
           return value
       }

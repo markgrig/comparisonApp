@@ -14,7 +14,8 @@
                 "wireless_charging" : false,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": false
+                "esim": false,
+                "price": 25990
             }
         },
         {
@@ -31,7 +32,8 @@
                 "wireless_charging" : true,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": true
+                "esim": true,
+                "price": 24999
             }
         },
         {
@@ -48,7 +50,8 @@
                 "wireless_charging" : true,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": true
+                "esim": true,
+                "price":  70999
             }
         },
         {
@@ -65,7 +68,9 @@
                 "wireless_charging" : true,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": true
+                "esim": true,
+                "price": 24999
+
             }
         },
         {
@@ -82,7 +87,8 @@
                 "wireless_charging" : true,
                 "NFC": true,
                 "update_frequency": 90,
-                "esim": true
+                "esim": true,
+                "price":  43120
             }
         },
         {
@@ -99,7 +105,8 @@
                 "wireless_charging" : true,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": true
+                "esim": true,
+                "price": 24999
             }
         },
         {
@@ -116,7 +123,8 @@
                 "wireless_charging": false,
                 "NFC": true,
                 "update_frequency": 90,
-                "esim": true
+                "esim": true,
+                "price": 24999
             }
         },
         {
@@ -133,7 +141,8 @@
                 "wireless_charging" : true,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": true
+                "esim": true,
+                "price": 59999
             }
         },
         {
@@ -150,7 +159,8 @@
                 "wireless_charging": false,
                 "NFC": true,
                 "update_frequency": 90,
-                "esim": false
+                "esim": false,
+                "price": 27990
             }
         },
         {
@@ -167,7 +177,8 @@
                 "wireless_charging": true,
                 "NFC": true,
                 "update_frequency": 90,
-                "esim": true
+                "esim": true,
+                "price": 24999
             }
         },
         {
@@ -184,7 +195,8 @@
                 "wireless_charging": false,
                 "NFC": true,
                 "update_frequency": 90,
-                "esim": false
+                "esim": false,
+                "price": 14999
             }
         },
         {
@@ -201,7 +213,8 @@
                 "wireless_charging" : true,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": true
+                "esim": true,
+                "price": 125990
             }
         },
         {
@@ -218,7 +231,8 @@
                 "wireless_charging" : false,
                 "NFC": true,
                 "update_frequency": 60,
-                "esim": false
+                "esim": false,
+                "price": 14999
             }
         }
     ],
