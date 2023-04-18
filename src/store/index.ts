@@ -37,7 +37,6 @@ export const store = createStore({
       items: [],
       mappingIdIndex: {},
       displayItemsId: [],
-      searchItems: {},
       defaultItems: 3,
       userQuery: ''
     }

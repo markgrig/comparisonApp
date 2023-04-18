@@ -49,7 +49,7 @@
             {{ getTableElement(el.main[keyProperty], keyProperty) }}
             <IcoIsTrue
               v-if = "isBoolean(el.main[keyProperty])"
-              :isTrue = "isBoolean(el.main[keyProperty])">
+              :isTrue = "el.main[keyProperty] as boolean">
             </IcoIsTrue>
           </div>
         </div>
