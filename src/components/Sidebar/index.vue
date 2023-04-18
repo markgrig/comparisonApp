@@ -25,7 +25,7 @@
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
 
-import MenuOption from './MenuOption/index.vue'
+import MenuOption from '@/ui/MenuOption/index.vue'
 import { IMenu } from './index'
 
 export default defineComponent({

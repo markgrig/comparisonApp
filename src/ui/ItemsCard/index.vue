@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import DropDown from '@/pages/ComparisonItems/components/DropDown/index.vue'
+import DropDown from '@/ui/DropDown/index.vue'
 import { useStore } from '@/store/index'
 import { IItem } from '@/index'
 

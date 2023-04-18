@@ -61,9 +61,9 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import ItemsCard from './ItemsCard/index.vue'
-import CheckBox from '../CheckBox/index.vue'
-import IcoIsTrue from '../IcoIsTrue/index.vue'
+import ItemsCard from '@/ui/ItemsCard/index.vue'
+import CheckBox from '@/ui/CheckBox/index.vue'
+import IcoIsTrue from '@/ui/IcoIsTrue/index.vue'
 import { IItem, ITableProperty } from '@/index'
 import type { booleanDictionary, dictionary } from '@/index'
 

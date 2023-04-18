@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import SideBar from './components/Sidebar/index.vue'
-import ComprasionItems from './pages/ComparisonItems/index.vue'
+import ComprasionItems from './components/ComparisonItems/index.vue'
 import { IQuery } from './index'
 
 export default defineComponent({

@@ -39,7 +39,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import ItemList from './ItemList/index.vue'
+import ItemList from '@/ui/ItemList/index.vue'
 import { IItem } from '@/index'
 
 export default defineComponent({
