@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import ComparisonTable from '@/ui/components/ComparisonTable/index.vue'
+import ComparisonTable from '@/ui/ComparisonTable/index.vue'
 import ChipGroup from '@/ui/ChipGroup/index.vue'
 import { useStore } from '@/store/index'
 
